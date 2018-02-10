@@ -27,8 +27,7 @@ class DouyuDanmakuClient(private val server: String, private val port: Int) {
                 val length = if (verifyA == verifyB) {
                     verifyA - 8
                 } else {
-                    it.onError(IllegalStateException("verify length not match"))
-                    break
+                    throw IllegalStateException("verify length not match")
                 }
 
                 val msg = buffer.readString(length.toLong(), Charsets.UTF_8)
